@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+# MyReads: A Book Lending App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created with create-react-app, using the latest version of react and react-router-dom.
 
-## Available Scripts
+## To run the app locally:
 
-In the project directory, you can run:
+- You can use `npm` (`yarn` is more preferred)
+- First, install the project dependencies with `yarn install`
+- Start the app in the development mode with `yarn start` and [http://localhost:3000](http://localhost:3000) will be
+  opened automatically
 
-### `npm start`
+## How the project is implemented:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- After analyzing the requirements, it can be seen that a reusable component for the books displaying across the two
+  main pages will be implemented as the smallest child component. It will be called **Book**.
+- In the **MyReads** page, the books are grouped by three shelves type, so **BookShelves** is created to hold three
+  shelves, containing the list of corresponding books that map to render the **Book** component. The fetched _books_
+  from the **getAll** API is processed in a functions to be grouped by the shelf type.
+- The **Search Page** component is created for the searching result page, which holds list of **Book** component
+  rendered with the books fetched from the **search API**. The shelf type of the books in the search result will be
+  displayed by mapping with the corresponding books in the main pages.
+- Routing is added at the **App.js** file, using **React Router**. The parent route is the `/`, which is the **MyReads**
+  page, containing the search page with `/search` route.
+- Data fetching for all books is called at the top component **App.js**, and from there it is passed down and processed
+  for further usages. Searching API is called at the **SearchPage** component so it can be passed down to many **Book**
+  components.
